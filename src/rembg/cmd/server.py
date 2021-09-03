@@ -9,6 +9,7 @@ from flask import Flask, request, send_file
 from waitress import serve
 
 from ..bg import remove
+import datetime
 
 app = Flask(__name__)
 
@@ -32,7 +33,8 @@ def index():
 
     if file_content == "":
         return {"error": "File content is empty"}, 400
-
+    
+    print("task: "+str(datetime.datetime.now()))
     alpha_matting = "a" in request.values
     af = request.values.get("af", type=int, default=240)
     ab = request.values.get("ab", type=int, default=10)
@@ -91,7 +93,7 @@ def main():
     )
 
     args = ap.parse_args()
-    serve(app, host=args.addr, port=args.port)
+    serve(app, host=args.addr, port=args.port, threads=5000)
 
 
 if __name__ == "__main__":
