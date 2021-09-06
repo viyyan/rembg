@@ -102,7 +102,7 @@ def index():
 
 def main():
     ap = argparse.ArgumentParser()
-    log = "/log/rembg-server.log"
+    log = "../../log/rembg-server.log"
     logging.basicConfig(filename=log,level=logging.DEBUG,format='%(asctime)s %(message)s', datefmt='%d/%m/%Y %H:%M:%S')
 
     ap.add_argument(
