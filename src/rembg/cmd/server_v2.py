@@ -37,7 +37,7 @@ def index():
     if file_content == "":
         return {"error": "File content is empty"}, 400
 
-    name_timestr = time.strftime("%Y%m%d_%H%M%S.png")
+    name_timestr = time.strftime("%Y%m%d_%H%M%S%.%f.png")
     logging.info("task: "+name_timestr)
     alpha_matting = "a" in request.values
     af = request.values.get("af", type=int, default=240)
@@ -75,6 +75,7 @@ def index():
                 ab,
                 ae,
                 az,
+                name_timestr
                 ))
         # you have to set daemon true to not have to wait for the process to join
         p.daemon = True
