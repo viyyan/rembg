@@ -111,7 +111,7 @@ def remove(
 
     bio = io.BytesIO()
     # cutout.save(bio, "PNG")
-    cutout.save('images/'+file_name, "PNG")
+    cutout.save('/usr/develop/rembg/images/'+file_name, "PNG")
     logging.info("image: "+file_name+" | saved: "+str(datetime.datetime.now()))
 
     # return bio.getbuffer()
