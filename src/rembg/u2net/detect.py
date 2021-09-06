@@ -161,7 +161,6 @@ def predict(net, item):
     sample = preprocess(item)
 
     with torch.no_grad():
-        print("cuda: "+ str(torch.cuda.is_available()))
         if torch.cuda.is_available():
             inputs_test = torch.cuda.FloatTensor(
                 sample["image"].unsqueeze(0).cuda().float()

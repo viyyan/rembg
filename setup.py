@@ -31,6 +31,7 @@ setup(
         "console_scripts": [
             "rembg=rembg.cmd.cli:main",
             "rembg-server=rembg.cmd.server:main",
+            "rembg-server-v2=rembg.cmd.server_v2:main",
         ],
     },
 )

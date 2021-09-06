@@ -9,6 +9,8 @@ from pymatting.util.util import stack_images
 from scipy.ndimage.morphology import binary_erosion
 
 from .u2net import detect
+import logging
+import datetime
 
 
 def alpha_matting_cutout(
@@ -86,6 +88,7 @@ def remove(
     alpha_matting_background_threshold=10,
     alpha_matting_erode_structure_size=10,
     alpha_matting_base_size=1000,
+    file_name="test_img.png"
 ):
     model = get_model(model_name)
     img = Image.open(io.BytesIO(data)).convert("RGB")
@@ -107,6 +110,8 @@ def remove(
         cutout = naive_cutout(img, mask)
 
     bio = io.BytesIO()
-    cutout.save(bio, "PNG")
+    # cutout.save(bio, "PNG")
+    cutout.save('/images/'+file_name, "PNG")
+    logging.info("image: "+file_name+" | saved: "+str(datetime.datetime.now()))
 
-    return bio.getbuffer()
+    # return bio.getbuffer()
