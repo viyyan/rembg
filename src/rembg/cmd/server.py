@@ -33,7 +33,7 @@ def index():
 
     if file_content == "":
         return {"error": "File content is empty"}, 400
-    
+
     print("task: "+str(datetime.datetime.now()))
     alpha_matting = "a" in request.values
     af = request.values.get("af", type=int, default=240)
@@ -93,7 +93,7 @@ def main():
     )
 
     args = ap.parse_args()
-    serve(app, host=args.addr, port=args.port, threads=5000)
+    serve(app, host=args.addr, port=args.port, threads=8)
 
 
 if __name__ == "__main__":
