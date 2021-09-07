@@ -28,9 +28,7 @@ def main():
     )
     args = ap.parse_args()
     appl = factory.create_app(celery=app.celery)
-    appl.host = args.addr
-    appl.port = args.port
-    appl.run()
+    appl.run(host=args.addr, port=args.port)
     # serve(app, host=args.addr, port=args.port, threads=4)
 
 
