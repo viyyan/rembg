@@ -110,8 +110,8 @@ def remove(
         cutout = naive_cutout(img, mask)
 
     bio = io.BytesIO()
-    # cutout.save(bio, "PNG")
-    cutout.save('/usr/develop/rembg/images/'+file_name, "PNG")
-    logging.info("image: "+file_name+" | saved: "+str(datetime.datetime.now()))
+    cutout.save(bio, "PNG")
+    # cutout.save('/usr/develop/rembg/images/'+file_name, "PNG")
+    # logging.info("image: "+file_name+" | saved: "+str(datetime.datetime.now()))
 
-    # return bio.getbuffer()
+    return bio.getbuffer()
