@@ -28,11 +28,11 @@ def index():
         file_content = request.files["file"].read()
 
     if request.method == "GET":
-        url = request.args.get("url", type=str).read()
+        url = request.args.get("url", type=str)
         if url is None:
             return {"error": "missing query param 'url'"}, 400
 
-        file_content = urlopen(unquote_plus(url))
+        file_content = urlopen(unquote_plus(url)).read()
 
     if file_content == "":
         return {"error": "File content is empty"}, 400
