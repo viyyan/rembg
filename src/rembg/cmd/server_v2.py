@@ -10,8 +10,8 @@ from waitress import serve
 
 from ..bg import remove
 import time
-from multiprocessing import Process
 import logging
+import threading
 
 
 app = Flask(__name__)
@@ -58,7 +58,7 @@ def index():
         return {"error": f"invalid query param 'model'. Available options are {model_choices}"}, 400
 
     try:
-        p = Process(target=remove, args=( file_content,
+        p = threading.Thread(target=remove, args=( file_content,
                 model,
                 alpha_matting,
                 af,
@@ -67,7 +67,6 @@ def index():
                 az,
                 name_timestr
                 ))
-        # you have to set daemon true to not have to wait for the process to join
         p.daemon = True
         p.start()
         # send_file(
