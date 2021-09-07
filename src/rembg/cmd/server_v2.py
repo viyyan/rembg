@@ -9,7 +9,7 @@ from flask import Flask, request, send_file
 from waitress import serve
 
 from ..bg import remove
-import time
+from datetime import datetime
 import logging
 import threading
 
@@ -37,7 +37,7 @@ def index():
     if file_content == "":
         return {"error": "File content is empty"}, 400
 
-    name_timestr = time.strftime("%Y%m%d_%H%M%S.%f.png")
+    name_timestr = datetime.utcnow().strftime("%Y%m%d_%H%M%S.%f.png")
     logging.info("task: "+name_timestr)
     alpha_matting = "a" in request.values
     af = request.values.get("af", type=int, default=240)
