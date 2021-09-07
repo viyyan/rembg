@@ -25,10 +25,10 @@ def index():
         if "file" not in request.files:
             return {"error": "missing post form param 'file'"}, 400
 
-        file_content = request.files["file"]
+        file_content = request.files["file"].read()
 
     if request.method == "GET":
-        url = request.args.get("url", type=str)
+        url = request.args.get("url", type=str).read()
         if url is None:
             return {"error": "missing query param 'url'"}, 400
 

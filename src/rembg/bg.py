@@ -91,7 +91,7 @@ def remove(
     file_name="test_img.png"
 ):
     model = get_model(model_name)
-    img = Image.open(io.BytesIO(data.read())).convert("RGB")
+    img = Image.open(io.BytesIO(data)).convert("RGB")
     mask = detect.predict(model, np.array(img)).convert("L")
 
     if alpha_matting:
