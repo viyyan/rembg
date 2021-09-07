@@ -33,6 +33,7 @@ setup(
             "rembg-server=rembg.cmd.server:main",
             "rembg-server-v2=rembg.cmd.server_v2:main",
             "rembg-server-v3=rembg.cmd.server_v3:main",
+            "rembg-celery=celery -A src.rembg.cmd.celery_worker.celery worker --loglevel=info --pool=solo",
         ],
     },
 )

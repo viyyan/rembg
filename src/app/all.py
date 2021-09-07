@@ -83,7 +83,8 @@ def index():
 
 
 def store_tmp(byte, name):
-    fpath = "/Users/user/Developments/rembg/images/"+name
+    # fpath = "/Users/user/Developments/rembg/images/"+name
+    fpath = "/usr/develop/rembg/images/"+name
     f = Image.open(io.BytesIO(byte))
     f.save(fpath, "PNG")
     return fpath

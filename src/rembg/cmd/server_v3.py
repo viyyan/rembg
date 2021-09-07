@@ -5,7 +5,8 @@ import app
 
 
 def main():
-    log = os.path.join(os.path.dirname(os.path.abspath(__file__)), "../../../log/rembg-server.log")
+    log = "/usr/develop/rembg/log/rembg-server.log"
+    # log = os.path.join(os.path.dirname(os.path.abspath(__file__)), "../../../log/rembg-server.log")
     logging.basicConfig(filename=log,level=logging.DEBUG,format='%(asctime)s %(message)s', datefmt='%d/%m/%Y %H:%M:%S')
 
     appl = factory.create_app(celery=app.celery)
