@@ -58,16 +58,6 @@ def index():
         return {"error": f"invalid query param 'model'. Available options are {model_choices}"}, 400
 
     try:
-        # remove(
-        #         file_content,
-        #         model_name=model,
-        #         alpha_matting=alpha_matting,
-        #         alpha_matting_foreground_threshold=af,
-        #         alpha_matting_background_threshold=ab,
-        #         alpha_matting_erode_structure_size=ae,
-        #         alpha_matting_base_size=az,
-        #         file_name=name_timestr
-        #     )
         p = Process(target=remove, args=( file_content,
                 model,
                 alpha_matting,

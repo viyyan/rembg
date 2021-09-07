@@ -11,4 +11,3 @@ scipy>=1.5.4
 pymatting>=1.1.1
 filetype>=1.0.7
 hsh>=1.1.0
-celery>=5.1.2
