@@ -32,6 +32,7 @@ setup(
             "rembg=rembg.cmd.cli:main",
             "rembg-server=rembg.cmd.server:main",
             "rembg-server-v2=rembg.cmd.server_v2:main",
+            "rembg-server-v3=rembg.cmd.server_v3:main",
         ],
     },
 )

@@ -11,6 +11,7 @@ from scipy.ndimage.morphology import binary_erosion
 from .u2net import detect
 import logging
 import datetime
+from app import celery
 
 
 def alpha_matting_cutout(
@@ -80,6 +81,7 @@ def get_model(model_name):
         return detect.load_model(model_name="u2net")
 
 
+@celery.task()
 def remove(
     data,
     model_name="u2net",
@@ -91,7 +93,7 @@ def remove(
     file_name="test_img.png"
 ):
     model = get_model(model_name)
-    img = Image.open(io.BytesIO(data)).convert("RGB")
+    img = Image.open(data).convert("RGB")
     mask = detect.predict(model, np.array(img)).convert("L")
 
     if alpha_matting:
@@ -110,8 +112,8 @@ def remove(
         cutout = naive_cutout(img, mask)
 
     bio = io.BytesIO()
-    cutout.save(bio, "PNG")
-    # cutout.save('/usr/develop/rembg/images/'+file_name, "PNG")
-    # logging.info("image: "+file_name+" | saved: "+str(datetime.datetime.now()))
+    # cutout.save(bio, "PNG")
+    cutout.save(data, "PNG")
+    logging.info("image: "+data+" | saved: "+str(datetime.datetime.utcnow()))
 
-    return bio.getbuffer()
+    # return bio.getbuffer()

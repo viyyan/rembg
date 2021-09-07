@@ -12,3 +12,7 @@ __pycache__/
 .tox
 .cache
 ve
+*.log
+*.png
+*.jpg
+*.jpeg
